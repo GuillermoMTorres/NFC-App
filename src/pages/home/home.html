@@ -1,14 +1,32 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      NFC - Music Fest
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+
+    <form (ngSubmit)="logForm()">
+      <ion-item>
+        <ion-label>Dni</ion-label>
+        <ion-input type="text" [(ngModel)]="todo.DNI" name="DNI"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Cantidad</ion-label>
+        <ion-textarea [(ngModel)]="todo.Cantidad" name="Cantidad"></ion-textarea>
+      </ion-item>
+      <button ion-button type="submit" block>Add Todo</button>
+    </form>
+    <p>{{text}}</p>
+    <p>{{text2}}</p>
+    <ion-list>
+    <ion-item-sliding *ngFor='let task of tasks | async'>
+      <ion-item>
+        <ion-label>{{ task.DNI }}</ion-label>
+        <ion-label>{{ task.Cantidad }}</ion-label>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>
